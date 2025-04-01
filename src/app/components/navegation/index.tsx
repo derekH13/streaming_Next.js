@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navegation() {
   return (
-    <nav className="w-full border-b-2 border-b-neutral-800 py-2.5 fixed">
+    <nav className="w-full border-b-2 border-b-neutral-800 py-2.5 z-50 fixed">
       <div className="interface2 flex items-center justify-between">
         <h1 className="text-3xl text-emerald-400 font-light">
           Series<span className="font-black">Fix</span>
