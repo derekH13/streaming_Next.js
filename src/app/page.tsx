@@ -1,9 +1,12 @@
 import React from "react";
+import Hero from "./containers/hero";
+import Categorias from "./components/categorias";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <section>
+      <Hero />
+      <Categorias />
+    </section>
   );
 }

@@ -1,5 +1,4 @@
 import Navegation from "./components/navegation";
-import Hero from "./containers/hero";
 
 import "./globals.css";
 
@@ -10,9 +9,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`antialiased bg-neutral-200`}>
+      <body className={`antialiased bg-stone-950`}>
         <Navegation />
-        <Hero />
 
         {children}
       </body>
