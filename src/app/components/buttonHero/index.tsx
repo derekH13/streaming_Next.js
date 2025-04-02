@@ -2,12 +2,12 @@ import React from "react";
 
 export default function ButtonHero() {
   return (
-    <div className="flex w-[220px] h-20 rounded-[10px] overflow-hidden">
+    <div className="flex w-[200px] h-16 rounded-[8px] overflow-hidden">
       <button className="bg-emerald-900 w-full h-full flex justify-center items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="80"
-          height="80"
+          width="70"
+          height="70"
           fill="white"
           className="bi bi-play-fill"
           viewBox="0 0 16 16"
@@ -18,8 +18,8 @@ export default function ButtonHero() {
       <button className="bg-emerald-300 w-full h-full flex justify-center items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="60"
-          height="60"
+          width="50"
+          height="50"
           fill="white"
           stroke="white" // Define a cor do traço
           stroke-width="1" // Aumenta a espessura da linha

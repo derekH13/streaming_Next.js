@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Navegation() {
@@ -24,8 +25,11 @@ export default function Navegation() {
             <a href="">Avaliacoes</a>
           </li>
         </ul>
-        <img
-          src="./assets/images/eu.jpeg"
+        <Image
+          width={50}
+          height={50}
+          priority
+          src="/assets/images/eu.jpeg"
           alt=""
           className="h-12 w-12 object-cover rounded-full"
         />
