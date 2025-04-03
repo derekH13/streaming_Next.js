@@ -8,7 +8,7 @@ export default function Navegation() {
         <h1 className="text-3xl text-emerald-400 font-light">
           Series<span className="font-black">Fix</span>
         </h1>
-        <ul className="flex gap-11 text-xl font-semibold text-white">
+        <ul className="flex gap-11 text-xl font-medium text-neutral-400">
           <li>
             <a href="">Home</a>
           </li>

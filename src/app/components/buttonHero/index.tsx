@@ -22,14 +22,11 @@ export default function ButtonHero() {
           height="50"
           fill="white"
           stroke="white" // Define a cor do traço
-          stroke-width="1" // Aumenta a espessura da linha
+          strokeWidth="1" // Aumenta a espessura da linha
           className="bi bi-plus-lg"
           viewBox="0 0 16 16"
         >
-          <path
-            fill-rule="evenodd"
-            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"
-          />
+          <path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
         </svg>
       </button>
     </div>
