@@ -8,7 +8,8 @@ export default function Home() {
     <section>
       <Hero />
       <Categorias />
-      <Listagem />
+      <Listagem genero={27} title="Terror" />
+      <Listagem genero={16} title="Romance" />
     </section>
   );
 }
