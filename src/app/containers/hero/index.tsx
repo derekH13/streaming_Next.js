@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="h-[800px] relative">
       <Image
-        width={2369}
+        width={2669}
         height={953}
         priority
         src="/assets/images/hero.png"

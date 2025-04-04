@@ -9,7 +9,7 @@ body {
 .interface{
   max-width: 1080px;
   margin: 0 auto;
-  width: 98%;
+  width: 96%;
 }
 
 .interface2{
@@ -29,4 +29,14 @@ body {
   );
   
  
+}
+
+
+
+
+@media(max-width: 790px){
+
+  .mobille{
+    display: none;
+  }
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import Hero from "./containers/hero";
 import Categorias from "./components/categorias";
 import Listagem from "./containers/listagem";
@@ -8,8 +7,10 @@ export default function Home() {
     <section>
       <Hero />
       <Categorias />
-      <Listagem genero={27} title="Terror" />
-      <Listagem genero={16} title="Romance" />
+      <Listagem slice={6} genero={"27"} title="Terror" />
+      <Listagem slice={6} genero={"35"} title="Comédia" />
+      <Listagem slice={6} genero={"16"} title="Animação" />
+      <Listagem slice={6} genero={"14"} title="Fantasia" />
     </section>
   );
 }

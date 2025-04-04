@@ -1,27 +1,37 @@
 import Image from "next/image";
 
 import { dadosImdb } from "@/app/interface";
+import Link from "next/link";
 
 type props = {
-  dadosFilme: dadosImdb;
+  dadosFilme: dadosImdb | null;
+  index: number;
 };
 
-export default function Card({ dadosFilme }: props) {
+export default async function Card({ dadosFilme, index }: props) {
+  const img =
+    `https://image.tmdb.org/t/p/w500/${dadosFilme && dadosFilme.poster_path}` ||
+    "https://image.tmdb.org/t/p/w500//npzFyBu4fFPQpWXaLKdrXc6JrUK.jpg";
+
+  console.log(index);
+
   return (
-    <div className="text-center">
-      <Image
-        height={300}
-        width={200}
-        src={
-          dadosFilme.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${dadosFilme.poster_path}`
-            : "/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2F%2FmOR1Ks0EcXocwMV4EPv4letz0F5.jpg&w=256&q=75 1x, /_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw500%2F%2FmOR1Ks0EcXocwMV4EPv4letz0F5.jpg&w=640&q=75 2x"
-        }
-        alt=""
-        className="rounded-[5px]"
-      />
-      <h6 className="text-neutral-200 font-medium pt-1.5">
-        {dadosFilme.title}
+    <div
+      className={`text-center flex flex-col justify-center items-center w-full ${
+        index == 5 ? "md:last:hidden" : ""
+      }`}
+    >
+      <Link href={`/infoFilme/${dadosFilme && dadosFilme.id}`}>
+        <Image
+          height={300}
+          width={200}
+          src={img}
+          alt=""
+          className="rounded-[5px] w-full h-full"
+        />
+      </Link>
+      <h6 className="text-neutral-200 font-medium pt-1.5 h-[64px] overflow-hidden">
+        {dadosFilme && dadosFilme.title}
       </h6>
     </div>
   );
