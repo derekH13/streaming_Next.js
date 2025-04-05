@@ -4,14 +4,26 @@ import { Util } from "@/util";
 
 type props = {
   title?: string;
-  genero: string;
+  genero?: string;
   slice: number | undefined;
+  isSearch?: string;
 };
 
-export default async function Listagem({ title, genero, slice }: props) {
-  const result = await Util.RequisicaoGenero(genero, slice);
+export default async function Listagem({
+  title,
+  genero,
+  slice,
+  isSearch,
+}: props) {
+  let result = await Util.RequisicaoGenero("17", 1);
 
-  console.log(result);
+  if (genero) {
+    result = await Util.RequisicaoGenero(genero, slice);
+  }
+
+  if (isSearch) {
+    result = await Util.requisicaoNome(isSearch);
+  }
 
   return (
     <section className="interface pt-2 pb-8">
