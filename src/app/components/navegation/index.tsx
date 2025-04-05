@@ -1,30 +1,25 @@
+"use client";
+
+import ModalMenu from "@/app/containers/modalMenu";
+// next server
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 
 export default function Navegation() {
+  const [IsModal, setIsModal] = useState(false);
+
+  function toggleModal() {
+    setIsModal(!IsModal);
+  }
+
   return (
-    <nav className="w-screen py-2.5 z-50 fixed">
-      <div className="interface2 flex items-center justify-between">
+    <nav className="w-screen z-50 fixed">
+      <ModalMenu IsModal={IsModal} clickClose={toggleModal} />
+      <div className="interface2 py-2.5  flex items-center justify-between">
         <h1 className="text-3xl text-emerald-400 font-light">
           Series<span className="font-black">Fix</span>
         </h1>
-        <ul className="flex gap-11 text-xl font-medium text-neutral-400 mobille">
-          <li>
-            <a href="">Home</a>
-          </li>
-          |
-          <li>
-            <a href="">Series</a>
-          </li>
-          |
-          <li>
-            <Link href="/catalogo">Filmes</Link>
-          </li>
-          |
-          <li>
-            <a href="">Avaliacoes</a>
-          </li>
-        </ul>
+
         <div className="flex gap-4 items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +39,20 @@ export default function Navegation() {
             alt=""
             className="h-12 w-12 object-cover rounded-full"
           />
+          <svg
+            onClick={() => toggleModal()}
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="white"
+            className="bi bi-list cursor-pointer"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fillRule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            />
+          </svg>
         </div>
       </div>
     </nav>
