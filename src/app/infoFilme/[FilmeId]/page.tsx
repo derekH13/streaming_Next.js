@@ -17,14 +17,14 @@ export default async function InfoFilme({
       {dadosFilmes ? (
         <section className="pt-40">
           <div className="interface">
-            <div className=" text-neutral-100 flex gap-8 pb-30">
-              <div className="min-w-[350px] relative">
+            <div className=" text-neutral-100 flex flex-col md:flex-row gap-8 pb-30">
+              <div className="md:min-w-[350px] w-[300px] relative mx-auto ">
                 <span className="absolute bottom-4 right-4 border-2 text-[28px] font-bold text-amber-300 h-20 w-20 bg-emerald-950 rounded-full flex justify-center items-center">
                   {dadosFilmes.vote_average}
                 </span>
                 <Image
                   className="h-[500px] w-full rounded-[5px] object-cover"
-                  height={800}
+                  height={600}
                   width={400}
                   priority
                   src={`https://image.tmdb.org/t/p/w500/${dadosFilmes.poster_path}`}

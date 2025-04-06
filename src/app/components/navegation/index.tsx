@@ -1,8 +1,12 @@
 "use client";
 
 import ModalMenu from "@/app/containers/modalMenu";
+
 // next server
 import Image from "next/image";
+import Link from "next/link";
+
+// react client
 import { useState } from "react";
 
 export default function Navegation() {
@@ -16,21 +20,25 @@ export default function Navegation() {
     <nav className="w-screen z-50 fixed">
       <ModalMenu IsModal={IsModal} clickClose={toggleModal} />
       <div className="interface2 py-2.5  flex items-center justify-between">
-        <h1 className="text-3xl text-emerald-400 font-light">
-          Series<span className="font-black">Fix</span>
-        </h1>
+        <Link href={"/"}>
+          <h1 className="text-3xl text-emerald-400 font-light">
+            Series<span className="font-black">Fix</span>
+          </h1>
+        </Link>
 
         <div className="flex gap-4 items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="30"
-            fill="white"
-            className="bi bi-search"
-            viewBox="0 0 16 16"
-          >
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-          </svg>
+          <Link href={"/Filmes"}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="white"
+              className="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+          </Link>
           <Image
             width={50}
             height={50}

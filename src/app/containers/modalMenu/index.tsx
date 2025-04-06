@@ -31,26 +31,26 @@ export default function ModalMenu({ clickClose, IsModal }: props) {
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
           </svg>
         </li>
-        <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
-          <Link className="pl-4" href={"/"}>
-            Home
-          </Link>
-        </li>
-        <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
-          <Link className="pl-4" href={"/Filmes"}>
-            Filmes
-          </Link>
-        </li>
-        <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
-          <Link className="pl-4" href={"/Filmes"}>
-            Series
-          </Link>
-        </li>
-        <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
-          <Link className="pl-4" href={"/Filmes"}>
-            Conta
-          </Link>
-        </li>
+        <Link href={"/"}>
+          <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
+            <p className="pl-4">Home</p>
+          </li>
+        </Link>
+        <Link href={"/Filmes"}>
+          <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
+            <p className="pl-4">Filmes</p>
+          </li>
+        </Link>
+        <Link href={"/Filmes"}>
+          <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
+            <p className="pl-4">Series</p>
+          </li>
+        </Link>
+        <Link href={"/Filmes"}>
+          <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
+            <p className="pl-4">Conta</p>
+          </li>
+        </Link>
       </ul>
     </motion.section>
   );

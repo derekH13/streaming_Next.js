@@ -1,11 +1,14 @@
-export default function InputPrimary() {
+export default async function InputPrimary() {
   return (
     <div className="flex h-[40px] rounded-[10px] w-full overflow-hidden">
       <input
         className="text w-full pl-2  bg-neutral-800 rounded-bl-[10px] rounded-tl-[10px]  h-full text-neutral-400 "
         placeholder="Pesquise o filme que deseja assistir"
       />
-      <button className="bg-emerald-900 w-[40px] h-full flex justify-center items-center">
+      <button
+        type="submit"
+        className="bg-emerald-900 w-[40px] h-full flex justify-center items-center"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

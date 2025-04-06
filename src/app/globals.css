@@ -18,6 +18,34 @@ body {
   width: 98%;
 }
 
+.btn-primary {
+  cursor:pointer;
+}
+
+.btn-primary svg{
+  transition: transform .5s, height .3s, width .3s ;
+  fill: white;
+  
+}
+
+.btn-primary:hover svg{
+height: 50px;
+width: 50px;
+transform: rotate(360deg);
+
+}
+
+.imagem_nav{
+  object-fit: cover;
+  height: 580px;
+  overflow: hidden;
+  clip-path: inset(0px 0px 470px 0px);
+  position: absolute;
+  transition: all .4s;
+  width: 100%;
+  z-index: -1;
+}
+
 .star {
   width: 40px;
   height: 40px;

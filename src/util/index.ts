@@ -3,9 +3,9 @@ import { dadosImdb } from "@/app/interface";
 const apiKey = "bbc155bdde2230ddd3afc634917c418a";
 
 export class Util {
-
-
-    static RequisicaoGenero = async (genero: string, slice: number | undefined) => {
+  
+  static RequisicaoGenero = async (genero: string, slice: number | undefined) => {
+      "use server"
           const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=pt-BR&with_genres=${genero}`
 
         try {
@@ -30,6 +30,7 @@ export class Util {
       };
 
     static async RequisiçãoId(movie_id: string){
+      "use server"
       const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${apiKey}&language=pt-BR`
 
       try {
@@ -41,14 +42,33 @@ export class Util {
   
         const data = await response.json();
 
-        console.log(data)
-
         const result: dadosImdb = data
 
       return result
   
       } catch (error) {
         console.error(error);
+      }
+    }
+
+    static async requisicaoNome(nome: string) {
+      "use server"
+      const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${nome}&language=pt-BR`
+      try{
+        const response = await fetch(url)
+
+        if(!response.ok){
+          throw new Error(`${response.status}`)
+        }
+
+        const data = await response.json()
+
+        const result: dadosImdb[] = data.results
+
+
+        return result
+      }catch(err){
+        console.error(err)
       }
     }
 }

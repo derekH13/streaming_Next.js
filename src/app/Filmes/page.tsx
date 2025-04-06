@@ -9,7 +9,7 @@ export default function Filmes() {
         <form action="" className="pb-10">
           <InputPrimary />
         </form>
-        <div>
+        <div className="min-h-[500px]">
           <Listagem slice={undefined} genero={"27"} />
         </div>
       </div>

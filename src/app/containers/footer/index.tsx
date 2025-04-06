@@ -7,16 +7,16 @@ export default function Footer() {
       <div className="footer__container">
         <ul className="text-2xl text-neutral-100 flex justify-between md:justify-center  md:gap-20 bg-neutral-800 py-10">
           <li>
-            <Link href={"#"}>Home</Link>
+            <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"#"}>Filmes</Link>
+            <Link href={"/Filmes"}>Filmes</Link>
           </li>
           <li>
-            <Link href={"#"}>Series</Link>
+            <Link href={"/Filmes"}>Series</Link>
           </li>
           <li>
-            <Link href={"#"}>Avaliacoes</Link>
+            <Link href={"/Filmes"}>Avaliacoes</Link>
           </li>
         </ul>
         <div className="footer__container__info">
