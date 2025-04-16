@@ -1,19 +1,27 @@
 "use client";
 
-export default function ButtonHero() {
+import Link from "next/link";
+
+type props = {
+  url?: string;
+};
+
+export default function ButtonHero({ url }: props) {
   return (
     <div className="flex w-[200px] h-16 rounded-[8px] overflow-hidden hover:scale-[0.98] transition-all duration-[.4s]">
-      <button className=" btn-primary bg-emerald-900 w-full h-full flex justify-center items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="70"
-          height="70"
-          className="bi bi-play-fill "
-          viewBox="0 0 16 16"
-        >
-          <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
-        </svg>
-      </button>
+      <Link className="w-full" target="_blank" href={url || ""}>
+        <button className=" btn-primary bg-emerald-900 w-full h-full flex justify-center items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="70"
+            height="70"
+            className="bi bi-play-fill "
+            viewBox="0 0 16 16"
+          >
+            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
+          </svg>
+        </button>
+      </Link>
       <button className="btn-primary bg-emerald-300 w-full h-full flex justify-center items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
