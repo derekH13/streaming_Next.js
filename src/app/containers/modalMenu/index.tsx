@@ -13,7 +13,7 @@ export default function ModalMenu({ clickClose, IsModal }: props) {
       initial={IsModal ? { x: 350 } : { x: 0 }}
       animate={IsModal ? { x: 0 } : { x: 350 }}
       transition={{ duration: 0.3 }}
-      className="fixed right-0 h-full w-[350px] bg-neutral-800  border-neutral-500 pt-4"
+      className="fixed right-0 h-screen w-[350px] bg-neutral-800  border-neutral-500 z-100"
     >
       <ul className="w-full text-neutral-300 flex flex-col text-xl">
         <li

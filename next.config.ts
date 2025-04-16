@@ -1,9 +1,13 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+// next.config.js
+module.exports = {
   images: {
-    domains: ["image.tmdb.org"], // Permite imagens da TMDb
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 };
-
-export default nextConfig;

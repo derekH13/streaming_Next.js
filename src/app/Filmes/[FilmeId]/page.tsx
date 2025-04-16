@@ -12,8 +12,8 @@ export default async function Filme({
   const query = await (await searchParams).q;
 
   return (
-    <section className="min-h-[500px]">
-      <div className="interface pt-30 pb-10">
+    <div className="w-5/7 pr-2">
+      <div className="w-full pb-10">
         <form
           action={handleSubmit}
           className="flex h-[40px] rounded-[10px] w-full overflow-hidden"
@@ -41,8 +41,13 @@ export default async function Filme({
         </form>
       </div>
       <div className="min-h-[500px]">
-        <Listagem slice={undefined} genero={FilmeId} isSearch={query} />
+        <Listagem
+          slice={undefined}
+          genero={FilmeId}
+          isSearch={query}
+          numGrid="6"
+        />
       </div>
-    </section>
+    </div>
   );
 }

@@ -17,7 +17,7 @@ export default function Navegation() {
   }
 
   return (
-    <nav className="w-screen z-50 fixed">
+    <nav className="w-screen fixed bg-[rgba(10,10,10,0.85)] backdrop-blur-sm z-100">
       <ModalMenu IsModal={IsModal} clickClose={toggleModal} />
       <div className="interface2 py-2.5  flex items-center justify-between">
         <Link href={"/"}>
