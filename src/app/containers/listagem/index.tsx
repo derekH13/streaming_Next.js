@@ -6,8 +6,9 @@ type props = {
   title?: string;
   genero?: string;
   slice: number | undefined;
-  isSearch?: string;
+  isSearch?: string | null;
   numGrid?: string;
+  animeGenero?: string | null;
 };
 
 export default async function Listagem({
@@ -16,16 +17,24 @@ export default async function Listagem({
   slice,
   isSearch,
   numGrid,
+  animeGenero,
 }: props) {
   let result = await Util.RequisicaoGenero("17", 1);
 
-  if (genero) {
+  if (genero && genero !== "busca") {
     result = await Util.RequisicaoGenero(genero, slice);
+    console.log(genero);
   }
-
   if (isSearch) {
     result = await Util.requisicaoNome(isSearch);
+    console.log(isSearch);
   }
+  if (animeGenero) {
+    result = await Util.buscarAnimeGenero(animeGenero);
+    console.log(result);
+  }
+
+  console.log(animeGenero);
 
   return (
     <section className="pt-2 pb-8 w-full">
@@ -41,10 +50,20 @@ export default async function Listagem({
             : `grid-cols-2 sm:grid-cols-3 md:grid-cols-5`
         } gap-5`}
       >
-        {result &&
-          result.map((item, index) => (
-            <Card key={item.id} index={index} dadosFilme={item} />
-          ))}
+        {/* verifica se não é um anime */}
+        {result && genero && animeGenero == null
+          ? result.map((item, index) => (
+              <Card key={item.id} index={index} dadosFilme={item} />
+            ))
+          : result &&
+            result.map((item, index) => (
+              <Card
+                key={item.mal_id}
+                index={index}
+                dadosFilme={item}
+                isAnime={true}
+              />
+            ))}
       </div>
     </section>
   );

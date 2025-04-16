@@ -8,29 +8,39 @@ export default function Filter() {
         title="Animes"
         categorias={
           <ul className="flex flex-col ">
-            <Link href="/Filmes/28">
+            <Link href="/Filmes/busca?a=1">
               <li className="h-[54px] flex justify-start items-center hover:bg-neutral-900 cursor-pointer pl-12">
                 Ação
               </li>
             </Link>
-            <Link href="/Filmes/12">
+            <Link href="/Filmes/busca?a=2">
               <li className="h-[54px] flex justify-start items-center hover:bg-neutral-900 cursor-pointer pl-12">
                 Aventura
               </li>
             </Link>
-            <Link href="/Filmes/14">
+            <Link href="/Filmes/busca?a=8">
               <li className="h-[54px] flex justify-start items-center hover:bg-neutral-900 cursor-pointer pl-12">
                 Fantasia
               </li>
             </Link>
-            <Link href="/Filmes/27">
+            <Link href="/Filmes/busca?a=10">
               <li className="h-[54px] flex justify-start items-center hover:bg-neutral-900 cursor-pointer pl-12">
                 Terror
               </li>
             </Link>
-            <Link href="/Filmes/10749">
+            <Link href="/Filmes/busca?a=14">
               <li className="h-[54px] flex justify-start items-center hover:bg-neutral-900 cursor-pointer pl-12">
                 Romance
+              </li>
+            </Link>
+            <Link href="/Filmes/busca?a=4">
+              <li className="h-[54px] flex justify-start items-center hover:bg-neutral-900 cursor-pointer pl-12">
+                Comédia
+              </li>
+            </Link>
+            <Link href="/Filmes/busca?a=30">
+              <li className="h-[54px] flex justify-start items-center hover:bg-neutral-900 cursor-pointer pl-12">
+                Esportes
               </li>
             </Link>
           </ul>

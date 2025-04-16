@@ -70,5 +70,26 @@ export class Util {
       }catch(err){
         console.error(err)
       }
+
+    }
+    static async buscarAnimeGenero(num: string){
+      "use server"
+
+      const url = `https://api.jikan.moe/v4/anime?genres=${num}`
+      try{
+        const response = await fetch(url)
+
+        if(!response.ok){
+          throw new Error('erro:' + response.status)
+        }
+
+        const data = await response.json()
+        return data.data
+
+      }catch(err){
+        console.error(err)
+      }
+        
+
     }
 }

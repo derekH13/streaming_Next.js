@@ -6,14 +6,24 @@ import Link from "next/link";
 type props = {
   dadosFilme: dadosImdb | null;
   index: number;
+  isAnime?: boolean;
 };
 
-export default async function Card({ dadosFilme, index }: props) {
-  const img =
-    `https://image.tmdb.org/t/p/w500/${dadosFilme && dadosFilme.poster_path}` ||
-    "https://image.tmdb.org/t/p/w500//npzFyBu4fFPQpWXaLKdrXc6JrUK.jpg";
+export default async function Card({ dadosFilme, index, isAnime }: props) {
+  let img;
 
-  console.log(index);
+  if (isAnime && dadosFilme) {
+    img = dadosFilme.images.jpg.image_url;
+    console.log(dadosFilme.images.jpg.image_url);
+  }
+
+  // verifica se foi a requisição de um anime
+  if (!isAnime && dadosFilme) {
+    img =
+      `https://image.tmdb.org/t/p/w500/${
+        dadosFilme && dadosFilme.poster_path
+      }` || "https://image.tmdb.org/t/p/w500//npzFyBu4fFPQpWXaLKdrXc6JrUK.jpg";
+  }
 
   return (
     <div
@@ -25,7 +35,7 @@ export default async function Card({ dadosFilme, index }: props) {
         <Image
           height={300}
           width={200}
-          src={img}
+          src={img ? img : ""}
           alt=""
           className="rounded-[5px] w-full h-full"
         />
