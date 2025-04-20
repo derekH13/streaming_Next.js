@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { dadosAnime, dadosImdb } from "@/app/interface";
+import { CatalogoFilme, dadosAnime, dadosImdb } from "@/app/interface";
 import Link from "next/link";
 
 type props = {
@@ -8,9 +8,15 @@ type props = {
   index: number;
   isAnime?: boolean;
   dadosAnime2?: dadosAnime | null;
+  cartFilme?: CatalogoFilme;
 };
 
-export default async function Card({ dadosFilme, index, dadosAnime2 }: props) {
+export default function Card({
+  dadosFilme,
+  index,
+  dadosAnime2,
+  cartFilme,
+}: props) {
   return (
     <>
       {dadosFilme && (
@@ -20,7 +26,7 @@ export default async function Card({ dadosFilme, index, dadosAnime2 }: props) {
           }`}
         >
           <Link
-            href={`/infoFilme/${dadosFilme && dadosFilme.id}`}
+            href={`/infoFilme/buscar?a=${dadosFilme && dadosFilme.id}`}
             className="h-full w-full"
           >
             <Image
@@ -59,6 +65,31 @@ export default async function Card({ dadosFilme, index, dadosAnime2 }: props) {
           </Link>
           <h6 className="text-neutral-200 font-medium pt-1.5 h-[64px] overflow-hidden">
             {dadosAnime2 && dadosAnime2.title}
+          </h6>
+        </div>
+      )}
+
+      {cartFilme && (
+        <div
+          className={`text-center flex flex-col justify-center items-center w-full ${
+            index == 5 ? "md:last:hidden" : ""
+          }`}
+        >
+          <Link
+            href={`/infoFilme/buscar?b=${cartFilme && cartFilme.apiFilme_id}`}
+            className="h-full w-full"
+          >
+            <Image
+              priority
+              height={300}
+              width={200}
+              src={cartFilme.cartFilmes_img}
+              alt=""
+              className="rounded-[5px] w-full h-full object-cover"
+            />
+          </Link>
+          <h6 className="text-neutral-200 font-medium pt-1.5 h-[64px] overflow-hidden">
+            {cartFilme && cartFilme.cartFilmes_title}
           </h6>
         </div>
       )}

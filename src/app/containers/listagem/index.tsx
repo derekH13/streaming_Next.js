@@ -1,6 +1,8 @@
 // components
 import Card from "@/app/components/card";
-import { Util } from "@/util";
+import { dadosAnime, dadosImdb } from "@/app/interface";
+import { buscarPorGenero, buscarPorNome } from "@/util";
+import { buscarAnimeGenero } from "@/util/jikan";
 
 type props = {
   title?: string;
@@ -19,19 +21,21 @@ export default async function Listagem({
   numGrid,
   animeGenero,
 }: props) {
-  let result = await Util.RequisicaoGenero("17", 1);
+  let resultFilme: dadosImdb[] | undefined = await buscarPorGenero("17", 1);
+
+  let resultAnime: dadosAnime[] | undefined = await buscarAnimeGenero("1", 1);
 
   if (genero && genero !== "busca") {
-    result = await Util.RequisicaoGenero(genero, slice);
+    resultFilme = await buscarPorGenero(genero, slice);
     console.log(genero);
   }
   if (isSearch) {
-    result = await Util.requisicaoNome(isSearch);
+    resultFilme = await buscarPorNome(isSearch);
     console.log(isSearch);
   }
   if (animeGenero) {
-    result = await Util.buscarAnimeGenero(animeGenero);
-    console.log(result);
+    resultAnime = await buscarAnimeGenero(animeGenero, slice);
+    console.log(resultAnime);
   }
 
   console.log(animeGenero);
@@ -46,21 +50,21 @@ export default async function Listagem({
       <div
         className={`grid  ${
           numGrid != undefined
-            ? `sm:grid-cols-2 md:grid-cols-3   lg:grid-cols-5 xl:grid-cols-6`
+            ? `grid-cols-2 md:grid-cols-3   lg:grid-cols-5 xl:grid-cols-6`
             : `grid-cols-2 sm:grid-cols-3 md:grid-cols-5`
         } gap-5`}
       >
         {/* verifica se não é um anime */}
-        {result && genero && animeGenero == null
-          ? result.map((item, index) => (
-              <Card key={item.id} index={index} dadosFilme={item} />
+        {resultFilme && genero && animeGenero == null
+          ? resultFilme.map((item, index) => (
+              <Card key={index} index={index} dadosFilme={item} />
             ))
-          : result &&
-            result.map((item, index) => (
+          : resultAnime &&
+            resultAnime.map((item, index) => (
               <Card
                 key={item.mal_id}
                 index={index}
-                dadosFilme={item}
+                dadosAnime2={item}
                 isAnime={true}
               />
             ))}

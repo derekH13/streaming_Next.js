@@ -15,7 +15,7 @@ export default function ModalMenu({ clickClose, IsModal }: props) {
       transition={{ duration: 0.3 }}
       className="fixed right-0 h-screen w-[350px] bg-neutral-800  border-neutral-500 z-100"
     >
-      <ul className="w-full text-neutral-300 flex flex-col text-xl">
+      <ul className="w-full text-neutral-300 flex flex-col text-[18px]">
         <li
           onClick={() => clickClose()}
           className="py-4 w-full cursor-pointer hover:bg-neutral-900"
@@ -36,6 +36,11 @@ export default function ModalMenu({ clickClose, IsModal }: props) {
             <p className="pl-4">Home</p>
           </li>
         </Link>
+        <Link href={"/conta"}>
+          <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
+            <p className="pl-4">Conta</p>
+          </li>
+        </Link>
         <Link href={"/Filmes"}>
           <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
             <p className="pl-4">Filmes</p>
@@ -44,6 +49,11 @@ export default function ModalMenu({ clickClose, IsModal }: props) {
         <Link href={"/Filmes"}>
           <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
             <p className="pl-4">Series</p>
+          </li>
+        </Link>
+        <Link href={"/MinhaLista"}>
+          <li className="py-4 w-full cursor-pointer hover:bg-neutral-900">
+            <p className="pl-4">Minha Lista</p>
           </li>
         </Link>
         <Link href={"/Filmes"}>

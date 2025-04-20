@@ -1,7 +1,6 @@
 "use client";
 
 import Filter from "../containers/filter";
-import Footer from "../containers/footer";
 
 export default function RootLayout({
   children,
@@ -10,13 +9,12 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <section className="min-h-[500px] flex gap-16 pt-30 ">
-        <div className="min-h-full">
+      <section className="min-h-[500px] flex flex-col-reverse md:flex-row gap-16 pt-30 ">
+        <div className="min-h-full ">
           <Filter />
         </div>
         {children}
       </section>
-      <Footer />
     </>
   );
 }

@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <s.footer className="bg-neutral-900">
       <div className="footer__container">
-        <ul className="text-2xl text-neutral-100 flex justify-between md:justify-center  md:gap-20 bg-neutral-800 py-10">
+        <ul className="text-xl text-neutral-100 flex justify-between md:justify-center  md:gap-20 bg-neutral-800 py-10">
           <li>
             <Link href={"/"}>Home</Link>
           </li>

@@ -1,20 +1,28 @@
 import ButtonHero from "@/app/components/buttonHero";
 import Listagem from "@/app/containers/listagem";
-import { Util } from "@/util";
+import { buscarFilmePorId } from "@/util";
+import { buscarAnimeId } from "@/util/jikan";
 import Image from "next/image";
 
 export default async function InfoFilme({
-  params,
+  searchParams,
 }: {
-  params: Promise<{ FilmeId: string }>;
+  searchParams: Promise<{ a?: string; b?: string }>;
 }) {
-  const { FilmeId } = await params;
+  let dadosFilmes, dadosAnime;
+  const FilmeId = await (await searchParams).a;
+  const AnimeId = await (await searchParams).b;
 
-  const dadosFilmes = await Util.RequisiçãoId(FilmeId);
+  if (FilmeId !== null && FilmeId)
+    dadosFilmes = await buscarFilmePorId(FilmeId);
+
+  if (AnimeId && AnimeId !== null) dadosAnime = await buscarAnimeId(AnimeId);
+
+  console.log(dadosFilmes);
 
   return (
     <div>
-      {dadosFilmes ? (
+      {dadosFilmes && (
         <section className="pt-40">
           <div className="interface">
             <div className=" text-neutral-100 flex flex-col md:flex-row gap-8 pb-30">
@@ -74,14 +82,12 @@ export default async function InfoFilme({
                 <div>
                   <h6 className="text-xl font-semibold">Descrição</h6>
                   <p className="flex gap-5 text-neutral-300 pb-6">
-                    Dalia, filha de um famoso escritor que morreu recentemente,
-                    herda o legado de terminar seu livro. Para isso, Dalia se
-                    tornará parte do livro e ficará cara a cara com os
-                    personagens que assumiram o tema do livro para serem os
-                    protagonistas.
+                    {dadosFilmes.overview !== ""
+                      ? dadosFilmes.overview
+                      : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}
                   </p>
                 </div>
-                <ButtonHero />
+                <ButtonHero idFilme={dadosFilmes.id} />
               </div>
             </div>
             <Listagem
@@ -91,8 +97,83 @@ export default async function InfoFilme({
             />
           </div>
         </section>
-      ) : (
-        <div>carregando</div>
+      )}
+
+      {dadosAnime && (
+        <section className="pt-40">
+          <div className="interface">
+            <div className=" text-neutral-100 flex flex-col md:flex-row gap-8 pb-30">
+              <div className="md:min-w-[350px] w-[300px] relative mx-auto ">
+                <span className="absolute bottom-4 right-4 border-2 text-[28px] font-bold text-amber-300 h-20 w-20 bg-emerald-950 rounded-full flex justify-center items-center">
+                  {dadosAnime.score}
+                </span>
+                <Image
+                  className="h-[500px] w-full rounded-[5px] object-cover"
+                  height={1900}
+                  width={1400}
+                  priority
+                  src={dadosAnime.images.jpg.large_image_url}
+                  alt=""
+                />
+              </div>
+              <div>
+                <h1 className="text-3xl font-semibold">{dadosAnime.title} </h1>
+
+                <div className="flex gap-2 pb-4 pt-2">
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                </div>
+                <div className="flex gap-10">
+                  <div>
+                    <h6 className="text-xl font-semibold">Data:</h6>
+                    <p className="flex gap-5 text-neutral-300 pb-2">
+                      {dadosAnime.year}
+                    </p>
+                  </div>
+                  <div>
+                    <h6 className="text-xl font-semibold">Popularidade:</h6>
+                    <p className="flex gap-5 text-neutral-300 pb-2">
+                      {dadosAnime.popularity}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-10">
+                  <div>
+                    <h6 className="text-xl font-semibold">Duração:</h6>
+                    <p className="flex gap-5 text-neutral-300 pb-2">
+                      {dadosAnime.episodes} episodeos
+                    </p>
+                  </div>
+                  <div>
+                    <h6 className="text-xl font-semibold">Generos:</h6>
+                    <div className="flex gap-5 text-neutral-300 pb-2">
+                      {dadosAnime.genres.map((item, index) => (
+                        <span key={index}>{item.name}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h6 className="text-xl font-semibold">Descrição</h6>
+                  <p className="flex gap-5 text-neutral-300 pb-6 max-h-[170px] overflow-hidden">
+                    {dadosAnime.synopsis}
+                  </p>
+                </div>
+                <div className="pt-4">
+                  <ButtonHero url={dadosAnime.url} />
+                </div>
+              </div>
+            </div>
+            <Listagem
+              slice={5}
+              animeGenero={dadosAnime.genres[0].mal_id.toString()}
+              title={dadosAnime.genres[0].name}
+            />
+          </div>
+        </section>
       )}
     </div>
   );

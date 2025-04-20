@@ -6,13 +6,18 @@ export default async function Filme({
   searchParams,
 }: {
   params: Promise<{ FilmeId: string }>;
-  searchParams: Promise<{ q: string }>;
+  searchParams: Promise<{ q?: string; a?: string }>;
 }) {
-  const { FilmeId } = await params;
-  const query = await (await searchParams).q;
+  let query: null | string = "";
+  let Anime: null | string = "";
+  let FilmeId: null | string = "";
+
+  FilmeId = await (await params).FilmeId;
+  query = (await (await searchParams).q) || null;
+  Anime = (await (await searchParams).a) || null;
 
   return (
-    <div className="w-5/7 pr-2">
+    <div className="md:w-5/7 w-full pr-2">
       <div className="w-full pb-10">
         <form
           action={handleSubmit}
@@ -40,12 +45,13 @@ export default async function Filme({
           </button>
         </form>
       </div>
-      <div className="min-h-[500px]">
+      <div className="min-h-[500px] md:w-full">
         <Listagem
           slice={undefined}
           genero={FilmeId}
           isSearch={query}
           numGrid="6"
+          animeGenero={Anime}
         />
       </div>
     </div>

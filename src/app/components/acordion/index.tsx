@@ -12,13 +12,13 @@ export default function Accordion({ title, categorias }: props) {
     <div className="w-full max-w-md mx-auto">
       <div className="border-b border-zinc-700">
         <button
-          className="flex w-full items-center justify-between gap-5 px-6"
+          className="flex w-full items-center justify-between gap-5 px-6 cursor-pointer"
           onClick={() => {
             const el = document.getElementById(title);
             if (el) el.classList.toggle("hidden");
           }}
         >
-          <h6 className=" min-w-[80px] h-[54px] flex justify-start items-center ">
+          <h6 className="text-emerald-400 font-bold min-w-[80px] h-[54px] flex justify-start items-center ">
             {title}
           </h6>
 

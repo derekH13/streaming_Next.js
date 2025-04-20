@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Filter() {
   return (
-    <section className="bg-neutral-800 text-neutral-50 h-full w-[300px] left-0 top-0 rounded-tr-[10px] rounded-br-[10px] pt-3">
+    <section className="bg-neutral-800 flex flex-row md:flex-col  text-neutral-50 md:h-full w-full md:w-[300px] left-0 top-0 rounded-tr-[10px] rounded-br-[10px] pt-3">
       <Accordion
         title="Animes"
         categorias={
